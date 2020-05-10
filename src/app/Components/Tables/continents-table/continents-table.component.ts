@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { COVIDRepositoryService } from 'src/app/APIServices/covidrepository-service.service';
-import { Continent } from 'src/app/Models/continent';
+import { Continent } from 'src/app/Models/Continent/continent';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

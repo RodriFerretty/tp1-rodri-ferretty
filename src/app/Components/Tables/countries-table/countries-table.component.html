@@ -1,1 +1,6 @@
 <p>countries-table works!</p>
+<ul>
+    <li *ngFor="let country of countries" (click)="onSelect(country)">
+      <span class="badge">{{country.country}}</span> 
+    </li>
+  </ul>

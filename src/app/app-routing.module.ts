@@ -18,7 +18,7 @@ const routes: Routes = [
         component: ContinentsTableComponent
       },
       {
-        path: '/:continente',
+        path: ':continente',
         component: ContinentDetailComponent
       }
     ]
@@ -32,7 +32,7 @@ const routes: Routes = [
         component: CountriesTableComponent
       },
       {
-        path: '/:continente',
+        path: ':country',
         component: CountryDetailComponent
       }
     ]

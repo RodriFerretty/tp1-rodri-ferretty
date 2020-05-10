@@ -6,6 +6,8 @@ import { ContinentsTableComponent } from './Components/Tables/continents-table/c
 import { ContinentDetailComponent } from './Components/Details/continent-detail/continent-detail.component';
 import { CountriesTableComponent } from './Components/Tables/countries-table/countries-table.component';
 import { CountryDetailComponent } from './Components/Details/country-detail/country-detail.component';
+import { LoginComponent } from './Components/Account/login/login.component';
+import { SignUpComponent } from './Components/Account/sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -36,6 +38,14 @@ const routes: Routes = [
         component: CountryDetailComponent
       }
     ]
+},
+{
+  path: 'login',
+  component: LoginComponent
+},
+{
+  path: 'signup',
+  component: SignUpComponent
 },
 {
     path: '',

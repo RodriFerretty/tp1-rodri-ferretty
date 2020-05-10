@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Adapter } from '../Core/Adapters/adapter';
+import { Adapter } from '../../Core/Adapters/adapter';
 
 export class Continent {
   constructor(

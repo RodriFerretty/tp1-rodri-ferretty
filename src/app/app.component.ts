@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { COVIDRepositoryService } from './APIServices/covidrepository-service.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +8,10 @@ import { COVIDRepositoryService } from './APIServices/covidrepository-service.se
 export class AppComponent {
   title = 'tp1-rodri-ferretty';
 
-  constructor(private service: COVIDRepositoryService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.service.getContinentsInfo().subscribe( continents => {
-      console.log(continents)
-    })
+    
   }
 
 }

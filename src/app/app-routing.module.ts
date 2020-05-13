@@ -8,12 +8,15 @@ import { CountriesTableComponent } from './Components/Tables/countries-table/cou
 import { CountryDetailComponent } from './Components/Details/country-detail/country-detail.component';
 import { LoginComponent } from './Components/Account/login/login.component';
 import { SignUpComponent } from './Components/Account/sign-up/sign-up.component';
+import { AuthGuard } from './AccountServices/Guard/auth.guard';
+import { SecureLoggedInPagesGuard } from './AccountServices/Guard/secure-logged-in-pages.guard';
 
 
 const routes: Routes = [
   {
     path: 'continents',
     component: ContinentsPageComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -28,6 +31,7 @@ const routes: Routes = [
 {
     path: 'countries',
     component: CountriesPageComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -41,11 +45,13 @@ const routes: Routes = [
 },
 {
   path: 'login',
-  component: LoginComponent
+  component: LoginComponent,
+  canActivate: [SecureLoggedInPagesGuard]
 },
 {
   path: 'signup',
-  component: SignUpComponent
+  component: SignUpComponent,
+  canActivate: [SecureLoggedInPagesGuard]
 },
 {
     path: '',

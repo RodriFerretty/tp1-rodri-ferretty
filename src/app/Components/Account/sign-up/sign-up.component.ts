@@ -30,7 +30,6 @@ export class SignUpComponent implements OnInit {
     console.log("Inicio onSignUp")
     this.authService.SignUp(this.model.email, this.model.password).then((result) => {
       console.log("Then del onSignUp: ", result)
-      this.router.navigate(['continents'])
     }).catch((error) => {
       console.log("Catch del onSignUp: ", error)
       window.alert(error.message)

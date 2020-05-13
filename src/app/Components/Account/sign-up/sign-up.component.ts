@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
 
   onSignUp(){
     console.log("Inicio onSignUp")
-    this.authService.SignUp(this.model.email, this.model.password).then((result) => {
+    this.authService.SignUp(this.model.email, this.model.password, this.model.name).then((result) => {
       console.log("Then del onSignUp: ", result)
     }).catch((error) => {
       console.log("Catch del onSignUp: ", error)

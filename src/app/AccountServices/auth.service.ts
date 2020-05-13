@@ -30,11 +30,11 @@ export class AuthService {
   }
 
   // Sign up with email/password
-  SignUp(email, password) {
+  SignUp(email, password, displayName) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        this.router.navigate(['login']);
+        result.user.updateProfile({displayName: displayName}).then(() => this.router.navigate(['login']) )
       })
       .catch((error) => {
         window.alert(error.message);
@@ -56,5 +56,10 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user'));
     console.log('En el isLoggedIn de auth.service: ', user);
     return user !== null ? true : false;
+  }
+
+  get userName(): string {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.displayName.split("@", 1)
   }
 }

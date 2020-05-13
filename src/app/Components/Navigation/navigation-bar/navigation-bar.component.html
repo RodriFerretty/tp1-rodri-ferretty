@@ -14,7 +14,7 @@
     </ul>
     <ul *ngIf="authService.isLoggedIn" class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a href="" class="nav-link">Nombre Usuario</a>
+          <a href="" class="nav-link">{{authService.userName}}</a>
         </li>
         <li class="nav-item">
           <a href="" class="nav-link">Favoritos</a>

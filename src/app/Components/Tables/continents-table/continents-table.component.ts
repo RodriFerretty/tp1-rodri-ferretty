@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { COVIDRepositoryService } from 'src/app/APIServices/covidrepository-service.service';
 import { Continent } from 'src/app/Models/Continent/continent';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/AccountServices/auth.service';
 
 @Component({
   selector: 'app-continents-table',
@@ -14,7 +15,8 @@ export class ContinentsTableComponent implements OnInit {
   constructor(
     private service: COVIDRepositoryService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {

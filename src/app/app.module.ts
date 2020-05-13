@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,11 @@ import { SignUpComponent } from './Components/Account/sign-up/sign-up.component'
 import { NavigationBarComponent } from './Components/Navigation/navigation-bar/navigation-bar.component';
 import { ContinentsPageComponent } from './Components/Pages/continents-page/continents-page.component';
 import { CountriesPageComponent } from './Components/Pages/countries-page/countries-page.component';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AuthService } from './AccountServices/auth.service';
 
 @NgModule({
   declarations: [
@@ -30,11 +36,15 @@ import { CountriesPageComponent } from './Components/Pages/countries-page/countr
     CountriesPageComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

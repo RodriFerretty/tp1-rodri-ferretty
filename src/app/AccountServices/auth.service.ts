@@ -13,20 +13,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-
   constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router
-  ) { }
+  ) {}
 
   // Sign in with email/password
   SignIn(email, password) {
-    return this.afAuth.signInWithEmailAndPassword(email, password)
-    .then((result) => {
-      // this.setUserData(result.user)
-      localStorage.setItem('user', JSON.stringify(result.user))
-      this.router.navigate(['continents'])
-    })
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        // this.setUserData(result.user)
+        localStorage.setItem('user', JSON.stringify(result.user));
+        this.router.navigate(['continents']);
+      });
   }
 
   // Sign up with email/password
@@ -34,7 +34,7 @@ export class AuthService {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        this.router.navigate(['login'])
+        this.router.navigate(['login']);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -43,17 +43,18 @@ export class AuthService {
 
   // Sign out
   SignOut() {
+    console.log("En el SignOut")
     return this.afAuth.signOut().then(() => {
+      console.log("En el then del SignOut")
       localStorage.removeItem('user');
       this.router.navigate(['login']);
     });
   }
 
   // Returns true when user is looged in
-    get isLoggedIn(): boolean {
-      const user = JSON.parse(localStorage.getItem('user'));
-      console.log('En el isLoggedIn de auth.service: ', user);
-      return user !== null ? true : false;
-    }
-
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log('En el isLoggedIn de auth.service: ', user);
+    return user !== null ? true : false;
+  }
 }

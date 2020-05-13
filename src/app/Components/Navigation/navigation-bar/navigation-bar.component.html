@@ -5,14 +5,14 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarMenu">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li *ngIf="authService.isLoggedIn" class="nav-item">
         <a href="" class="nav-link" routerLink="continents">Continentes</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="authService.isLoggedIn" class="nav-item">
         <a href="" class="nav-link" routerLink="countries">Paises</a>
       </li>
     </ul>
-    <ul class="navbar-nav ml-auto">
+    <ul *ngIf="authService.isLoggedIn" class="navbar-nav ml-auto">
         <li class="nav-item">
           <a href="" class="nav-link">Nombre Usuario</a>
         </li>

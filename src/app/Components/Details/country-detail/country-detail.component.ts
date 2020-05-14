@@ -25,7 +25,7 @@ export class CountryDetailComponent implements OnInit {
 
   getAndSetCountryOnInit() {
     var countryFromNav = this.navService.getCountry()
-    console.log("CONTINENT FROM NAV: ", countryFromNav)
+    // console.log("CONTINENT FROM NAV: ", countryFromNav)
     if (countryFromNav != null) {
       this.navService.cleanNavigationCountry()
       this.selectedCountry = countryFromNav
@@ -37,7 +37,7 @@ export class CountryDetailComponent implements OnInit {
   getCountryFromApi() {
     this.route.params.subscribe( params => {
       this.service.getCountry(params['country']).subscribe((country) =>{
-        console.log("RESPUESTA PAIS: ", country)
+        // console.log("RESPUESTA PAIS: ", country)
         this.selectedCountry = country
       })
     })

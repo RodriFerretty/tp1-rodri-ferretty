@@ -16,7 +16,7 @@ export class ContinentsCountriesTableComponent implements OnInit {
   }
 
   onSelect(country: string): void {
-    console.log('Selected country in continent-country-table: ', country);
+    // console.log('Selected country in continent-country-table: ', country);
     this.countryClicked.emit(country)
   }
 

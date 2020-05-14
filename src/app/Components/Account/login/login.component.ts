@@ -19,16 +19,16 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() { 
-    console.log(this.model)
+    // console.log(this.model)
     this.onSignIn()
   }
 
   onSignIn(){
-    console.log("Inicio onSignUp")
+    // console.log("Inicio onSignUp")
     this.authService.SignIn(this.model.email, this.model.password).then((result) => {
-      console.log("Then del onSignIn: ", result)
+      // console.log("Then del onSignIn: ", result)
     }).catch((error) => {
-      console.log("Catch del onSignIn: ", error)
+      // console.log("Catch del onSignIn: ", error)
       window.alert(error.message)
     })
   }

@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() { 
-    console.log(this.model)
+    // console.log(this.model)
     this.onSignUp()
   }
 
@@ -27,11 +27,11 @@ export class SignUpComponent implements OnInit {
   // get diagnostic() { return JSON.stringify(this.model); }
 
   onSignUp(){
-    console.log("Inicio onSignUp")
+    // console.log("Inicio onSignUp")
     this.authService.SignUp(this.model.email, this.model.password, this.model.name).then((result) => {
-      console.log("Then del onSignUp: ", result)
+      // console.log("Then del onSignUp: ", result)
     }).catch((error) => {
-      console.log("Catch del onSignUp: ", error)
+      // console.log("Catch del onSignUp: ", error)
       window.alert(error.message)
     })
   }

@@ -21,14 +21,14 @@ export class ContinentsTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getContinentsInfo().subscribe((continents) => {
-      console.log(continents);
+      // console.log(continents);
       this.continents = continents;
-      console.log('VARIABLE CONTINENTES: ', this.continents);
+      // console.log('VARIABLE CONTINENTES: ', this.continents);
     });
   }
 
   onSelect(continent: Continent): void {
-    console.log('Selected continent: ', continent.continent);
+    // console.log('Selected continent: ', continent.continent);
     this.navService.setContinent(continent)
     this.router.navigate(['/continents/', continent.continent ])
   }

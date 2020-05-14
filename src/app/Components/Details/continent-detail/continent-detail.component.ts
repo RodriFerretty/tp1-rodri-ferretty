@@ -30,7 +30,7 @@ export class ContinentDetailComponent implements OnInit {
 
   getAndSetContinentOnInit() {
     var continentFromNav = this.navService.getContinent()
-    console.log("CONTINENT FROM NAV: ", continentFromNav)
+    // console.log("CONTINENT FROM NAV: ", continentFromNav)
     if (continentFromNav != null) {
       this.navService.cleanNavigationContinent()
       this.continenteSeleccionado = continentFromNav
@@ -42,14 +42,14 @@ export class ContinentDetailComponent implements OnInit {
   getContinentFromApi() {
     this.route.params.subscribe( params => {
       this.service.getContinent(params['continent']).subscribe((continent) =>{
-        console.log("RESPUESTA CONTINENTE: ", continent)
+        // console.log("RESPUESTA CONTINENTE: ", continent)
         this.continenteSeleccionado = continent
       })
     })
   }
 
   onSelectedCountry(countrySelected: string) {
-    console.log("PAIS SELECCIONADO: ", countrySelected)
+    // console.log("PAIS SELECCIONADO: ", countrySelected)
     this.router.navigate(['/countries/', countrySelected])
   }
 

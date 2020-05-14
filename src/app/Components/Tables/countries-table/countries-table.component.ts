@@ -21,15 +21,15 @@ export class CountriesTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getCountriesInfo().subscribe((countries) => {
-      console.log(countries);
+      // console.log(countries);
       this.countries = countries;
       this.originalCountries = countries;
-      console.log('VARIABLE COUNTRIES: ', this.countries);
+      // console.log('VARIABLE COUNTRIES: ', this.countries);
     });
   }
 
   onSelect(country: Country): void {
-    console.log('Selected country: ', country.country);
+    // console.log('Selected country: ', country.country);
     this.navService.setCountry(country)
     this.router.navigate(['/countries/', country.country ])
   }

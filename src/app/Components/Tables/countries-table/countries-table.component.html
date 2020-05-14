@@ -1,6 +1,33 @@
-<p>countries-table works!</p>
-<ul>
+<div class="countries-table">
+  <div class="row">
+    <div class="col">
+      <input
+        type="text"
+        (input)="onSearchChange($event.target.value)"
+        placeholder="Buscar..."
+      />
+    </div>
+  </div>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Pais</th>
+        <th scope="col">Casos</th>
+        <th scope="col">Muertes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countries" (click)="onSelect(country)">
+        <td class="col-6">{{ country.country }}</td>
+        <td class="col-3">{{ country.cases }}</td>
+        <td class="col-3">{{ country.deaths }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- <ul>
     <li *ngFor="let country of countries" (click)="onSelect(country)">
       <span class="badge">{{country.country}}</span> 
     </li>
-  </ul>
+  </ul> -->

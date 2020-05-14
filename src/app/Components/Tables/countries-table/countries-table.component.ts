@@ -10,6 +10,7 @@ import { CountryNavigationService } from 'src/app/NavigationServices/Countries/c
   styleUrls: ['./countries-table.component.css']
 })
 export class CountriesTableComponent implements OnInit {
+  originalCountries: Country[]
   countries: Country[]
   
   constructor(
@@ -22,6 +23,7 @@ export class CountriesTableComponent implements OnInit {
     this.service.getCountriesInfo().subscribe((countries) => {
       console.log(countries);
       this.countries = countries;
+      this.originalCountries = countries;
       console.log('VARIABLE COUNTRIES: ', this.countries);
     });
   }
@@ -30,6 +32,10 @@ export class CountriesTableComponent implements OnInit {
     console.log('Selected country: ', country.country);
     this.navService.setCountry(country)
     this.router.navigate(['/countries/', country.country ])
+  }
+
+  onSearchChange(word: string){
+   this.countries = this.originalCountries.filter(country => country.country.toLowerCase().includes(word))
   }
 
 }

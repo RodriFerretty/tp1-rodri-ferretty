@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Country } from 'src/app/Models/Country/country';
 import { COVIDRepositoryService } from 'src/app/APIServices/covidrepository-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CountryNavigationService } from 'src/app/NavigationServices/Countries/country-navigation.service';
 
 @Component({
   selector: 'app-countries-table',
@@ -13,8 +14,8 @@ export class CountriesTableComponent implements OnInit {
   
   constructor(
     private service: COVIDRepositoryService,
-    private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private navService: CountryNavigationService
   ) { }
 
   ngOnInit(): void {
@@ -27,8 +28,8 @@ export class CountriesTableComponent implements OnInit {
 
   onSelect(country: Country): void {
     console.log('Selected country: ', country.country);
+    this.navService.setCountry(country)
     this.router.navigate(['/countries/', country.country ])
-    console.log("APA_: ", this.router.getCurrentNavigation())
   }
 
 }

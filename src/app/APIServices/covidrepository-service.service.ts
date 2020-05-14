@@ -49,4 +49,13 @@ export class COVIDRepositoryService {
         map((data: any) => this.continentAdapter.adapt(data))
       )
   }
+
+  public getCountry(countryName: String): Observable<Country> {
+    const endpoint = 'countries/';
+
+    return this.httpClient.get(`${this.url}${endpoint}${countryName}`)
+      .pipe(
+        map((data: any) => this.countryAdapter.adapt(data))
+      )
+  }
 }

@@ -31,7 +31,7 @@ const routes: Routes = [
 {
     path: 'countries',
     component: CountriesPageComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',

@@ -21,7 +21,6 @@ export class ContinentDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.continenteSeleccionado = this.navService.getContinent()
     this.getAndSetContinentOnInit()
   }
 

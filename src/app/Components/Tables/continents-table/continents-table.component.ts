@@ -15,9 +15,7 @@ export class ContinentsTableComponent implements OnInit {
 
   constructor(
     private service: COVIDRepositoryService,
-    private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,
     private navService: ContinentNavigationService
   ) {}
 
@@ -33,6 +31,5 @@ export class ContinentsTableComponent implements OnInit {
     console.log('Selected continent: ', continent.continent);
     this.navService.setContinent(continent)
     this.router.navigate(['/continents/', continent.continent ])
-    console.log("APA_: ", this.router.getCurrentNavigation())
   }
 }

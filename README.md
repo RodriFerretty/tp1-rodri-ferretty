@@ -3,6 +3,9 @@
 
 ## URL Firebase Hosting:
  https://labo4tp1.web.app 
+ 
+## Tema/API:
+ COVID-19 / https://corona.lmao.ninja/docs/
 
 ## Test users:
 User                          | Password

@@ -3,6 +3,7 @@ import { COVIDRepositoryService } from 'src/app/APIServices/covidrepository-serv
 import { Continent } from 'src/app/Models/Continent/continent';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/AccountServices/auth.service';
+import { ContinentNavigationService } from 'src/app/NavigationServices/Continents/continent-navigation.service';
 
 @Component({
   selector: 'app-continents-table',
@@ -16,7 +17,8 @@ export class ContinentsTableComponent implements OnInit {
     private service: COVIDRepositoryService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private navService: ContinentNavigationService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class ContinentsTableComponent implements OnInit {
 
   onSelect(continent: Continent): void {
     console.log('Selected continent: ', continent.continent);
+    this.navService.setContinent(continent)
     this.router.navigate(['/continents/', continent.continent ])
     console.log("APA_: ", this.router.getCurrentNavigation())
   }

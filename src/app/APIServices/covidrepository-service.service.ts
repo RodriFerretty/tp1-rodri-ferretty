@@ -40,4 +40,13 @@ export class COVIDRepositoryService {
         )
       );
   }
+
+  public getContinent(continentName: String): Observable<Continent> {
+    const endpoint = 'continents/';
+
+    return this.httpClient.get(`${this.url}${endpoint}${continentName}`)
+      .pipe(
+        map((data: any) => this.continentAdapter.adapt(data))
+      )
+  }
 }

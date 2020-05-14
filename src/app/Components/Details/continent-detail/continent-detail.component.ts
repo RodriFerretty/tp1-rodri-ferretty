@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Continent, ContinentAdapter } from 'src/app/Models/Continent/continent';
 import { ContinentNavigationService } from 'src/app/NavigationServices/Continents/continent-navigation.service';
 import { COVIDRepositoryService } from 'src/app/APIServices/covidrepository-service.service';
+import { Country } from 'src/app/Models/Country/country';
+import { CountryNavigationService } from 'src/app/NavigationServices/Countries/country-navigation.service';
 
 @Component({
   selector: 'app-continent-detail',
@@ -16,7 +18,9 @@ export class ContinentDetailComponent implements OnInit {
   constructor(
     private service: COVIDRepositoryService,
     private route: ActivatedRoute,
-    private navService: ContinentNavigationService  
+    private router: Router,
+    private navService: ContinentNavigationService,
+    private countryNavService: CountryNavigationService 
   ) {
   }
 
@@ -42,6 +46,11 @@ export class ContinentDetailComponent implements OnInit {
         this.continenteSeleccionado = continent
       })
     })
+  }
+
+  onSelectedCountry(countrySelected: string) {
+    console.log("PAIS SELECCIONADO: ", countrySelected)
+    this.router.navigate(['/countries/', countrySelected])
   }
 
 }

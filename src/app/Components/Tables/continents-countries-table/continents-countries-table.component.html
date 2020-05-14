@@ -1,1 +1,12 @@
-<p>continents-countries-table works!</p>
+<table class="table table-striped text-center">
+  <thead>
+    <tr>
+      <th scope="col">PAISES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let country of countries" (click)="onSelect(country)">
+      <span>{{ country }}</span>
+    </tr>
+  </tbody>
+</table>

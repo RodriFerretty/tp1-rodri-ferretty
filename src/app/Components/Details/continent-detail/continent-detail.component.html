@@ -1,5 +1,5 @@
-<div *ngIf="continenteSeleccionado"class="d-flex justify-content-center">
-  <h3>{{continenteSeleccionado.continent}}</h3>
+<div *ngIf="continenteSeleccionado" class="d-flex justify-content-center">
+  <h3>{{ continenteSeleccionado.continent }}</h3>
 </div>
 
 <div *ngIf="continenteSeleccionado" class="container">
@@ -31,18 +31,12 @@
     </div>
   </div>
   <div class="row">
-    <table class="table text-center">
-      <thead>
-        <tr>
-          <th scope="col">PAISES</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let country of continenteSeleccionado.countries">
-          <span>{{country}}</span>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col">
+      <app-continents-countries-table
+        [countryList]="continenteSeleccionado.countries"
+        (countryClicked)="onSelectedCountry($event)"
+      ></app-continents-countries-table>
+    </div>
   </div>
 </div>
 

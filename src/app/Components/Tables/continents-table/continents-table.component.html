@@ -1,6 +1,5 @@
-<p>continents-table works!</p>
-<ul>
-    <li *ngFor="let continent of continents" (click)="onSelect(continent)">
-      <span class="badge">{{continent.continent}}</span> 
+  <ul class="list-group">
+    <li *ngFor="let continent of continents" (click)="onSelect(continent)" class="list-group-item text-center">
+      <span>{{continent.continent}}</span>
     </li>
   </ul>

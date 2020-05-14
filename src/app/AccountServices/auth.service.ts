@@ -45,7 +45,7 @@ export class AuthService {
   SignOut() {
     console.log("En el SignOut")
     return this.afAuth.signOut().then(() => {
-      console.log("En el then del SignOut")
+      // console.log("En el then del SignOut")
       localStorage.removeItem('user');
       this.router.navigate(['login']);
     });
@@ -54,12 +54,12 @@ export class AuthService {
   // Returns true when user is looged in
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log('En el isLoggedIn de auth.service: ', user);
+    // console.log('En el isLoggedIn de auth.service: ', user);
     return user !== null ? true : false;
   }
 
   get userName(): string {
     const user = JSON.parse(localStorage.getItem('user'));
-    return user.displayName.split("@", 1)
+    return user.displayName !== null ? user.displayName : user.email.split("@", 1); 
   }
 }

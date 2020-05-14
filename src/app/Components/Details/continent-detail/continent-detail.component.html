@@ -4,7 +4,7 @@
 
 <div *ngIf="continenteSeleccionado" class="container">
   <div class="row">
-    <div class="col">
+    <!-- <div class="col">
       <div class="text-center">
         <img
           src="https://www.saberespractico.com/wp-content/uploads/2013/01/paises-america-norte.jpg"
@@ -12,7 +12,7 @@
           alt="..."
         />
       </div>
-    </div>
+    </div> -->
     <div class="col">
       <ul class="list-group">
         <li class="list-group-item">
@@ -30,7 +30,7 @@
       </ul>
     </div>
   </div>
-  <div class="row">
+  <div class="row countries-table-container">
     <div class="col">
       <app-continents-countries-table
         [countryList]="continenteSeleccionado.countries"

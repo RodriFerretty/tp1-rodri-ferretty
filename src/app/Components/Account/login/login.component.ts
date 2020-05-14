@@ -23,9 +23,6 @@ export class LoginComponent implements OnInit {
     this.onSignIn()
   }
 
-  // TODO: Remove this when we're done
-  // get diagnostic() { return JSON.stringify(this.model); }
-
   onSignIn(){
     console.log("Inicio onSignUp")
     this.authService.SignIn(this.model.email, this.model.password).then((result) => {

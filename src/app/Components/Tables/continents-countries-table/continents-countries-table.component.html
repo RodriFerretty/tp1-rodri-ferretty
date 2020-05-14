@@ -5,7 +5,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let country of countries" (click)="onSelect(country)">
+    <tr *ngFor="let country of countries" (click)="onSelect(country)" class="row-clickable">
       <span>{{ country }}</span>
     </tr>
   </tbody>

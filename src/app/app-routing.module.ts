@@ -6,8 +6,7 @@ import { ContinentsTableComponent } from './Components/Tables/continents-table/c
 import { ContinentDetailComponent } from './Components/Details/continent-detail/continent-detail.component';
 import { CountriesTableComponent } from './Components/Tables/countries-table/countries-table.component';
 import { CountryDetailComponent } from './Components/Details/country-detail/country-detail.component';
-import { LoginComponent } from './Components/Account/login/login.component';
-import { SignUpComponent } from './Components/Account/sign-up/sign-up.component';
+import { MainSessionComponent } from './Components/Account/main-session/main-session.component';
 import { AuthGuard } from './AccountServices/Guard/auth.guard';
 import { SecureLoggedInPagesGuard } from './AccountServices/Guard/secure-logged-in-pages.guard';
 
@@ -45,12 +44,7 @@ const routes: Routes = [
 },
 {
   path: 'login',
-  component: LoginComponent,
-  canActivate: [SecureLoggedInPagesGuard]
-},
-{
-  path: 'signup',
-  component: SignUpComponent,
+  component: MainSessionComponent,
   canActivate: [SecureLoggedInPagesGuard]
 },
 {

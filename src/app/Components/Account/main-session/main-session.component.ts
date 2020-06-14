@@ -3,11 +3,11 @@ import { AuthService } from 'src/app/AccountServices/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-main-session',
+  templateUrl: './main-session.component.html',
+  styleUrls: ['./main-session.component.css']
 })
-export class LoginComponent implements OnInit {
+export class MainSessionComponent implements OnInit {
   model = new LoginModel()
 
   constructor(

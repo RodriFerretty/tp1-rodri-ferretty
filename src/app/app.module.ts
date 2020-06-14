@@ -20,6 +20,9 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AuthService } from './AccountServices/auth.service';
+import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
+import { LoginTabComponent } from './Components/Account/tabComponents/login-tab/login-tab.component';
+import { SignUpTabComponent } from './Components/Account/tabComponents/sign-up-tab/sign-up-tab.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { AuthService } from './AccountServices/auth.service';
     SignUpComponent,
     NavigationBarComponent,
     ContinentsPageComponent,
-    CountriesPageComponent
+    CountriesPageComponent,
+    LoginTabComponent,
+    SignUpTabComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -42,7 +47,9 @@ import { AuthService } from './AccountServices/auth.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -3,16 +3,15 @@ import { AuthService } from 'src/app/AccountServices/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-tab',
+  templateUrl: './login-tab.component.html',
+  styleUrls: ['./login-tab.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginTabComponent implements OnInit {
   model = new LoginModel()
 
   constructor(
-    public authService: AuthService,
-    private router: Router
+    public authService: AuthService
     ) { }
 
   ngOnInit(): void {

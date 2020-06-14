@@ -3,16 +3,15 @@ import { AuthService } from 'src/app/AccountServices/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  selector: 'app-sign-up-tab',
+  templateUrl: './sign-up-tab.component.html',
+  styleUrls: ['./sign-up-tab.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpTabComponent implements OnInit {
   model = new SignUpModel()
 
   constructor(
-    public authService: AuthService,
-    private router: Router
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {

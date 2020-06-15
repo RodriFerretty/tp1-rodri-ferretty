@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/AccountServices/auth.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-sign-up-tab',
@@ -11,7 +12,8 @@ export class SignUpTabComponent implements OnInit {
   model = new SignUpModel()
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -27,9 +29,12 @@ export class SignUpTabComponent implements OnInit {
 
   onSignUp() {
     // console.log("Inicio onSignUp")
+    this.spinner.show()
     this.authService.SignUp(this.model.email, this.model.password, this.model.name).then((result) => {
+      this.spinner.hide()
       // console.log("Then del onSignUp: ", result)
     }).catch((error) => {
+      this.spinner.hide()
       // console.log("Catch del onSignUp: ", error)
       window.alert(error.message)
     })

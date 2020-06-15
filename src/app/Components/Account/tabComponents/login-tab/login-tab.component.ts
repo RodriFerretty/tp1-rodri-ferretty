@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/AccountServices/auth.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login-tab',
@@ -11,10 +12,12 @@ export class LoginTabComponent implements OnInit {
   model = new LoginModel()
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private spinner: NgxSpinnerService
     ) { }
 
   ngOnInit(): void {
+    
   }
 
   resolved(captchaResponse: string) {
@@ -28,10 +31,13 @@ export class LoginTabComponent implements OnInit {
 
   onSignIn(){
     // console.log("Inicio onSignUp")
+    this.spinner.show()
     this.authService.SignIn(this.model.email, this.model.password).then((result) => {
       // console.log("Then del onSignIn: ", result)
+      this.spinner.hide()
     }).catch((error) => {
       // console.log("Catch del onSignIn: ", error)
+      this.spinner.hide()
       window.alert(error.message)
     })
   }

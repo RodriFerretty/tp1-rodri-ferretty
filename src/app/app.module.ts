@@ -22,6 +22,7 @@ import { AuthService } from './AccountServices/auth.service';
 import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 import { LoginTabComponent } from './Components/Account/tabComponents/login-tab/login-tab.component';
 import { SignUpTabComponent } from './Components/Account/tabComponents/sign-up-tab/sign-up-tab.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SignUpTabComponent } from './Components/Account/tabComponents/sign-up-t
     HttpClientModule,
     FormsModule,
     RecaptchaModule,
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
+    NgxSpinnerModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

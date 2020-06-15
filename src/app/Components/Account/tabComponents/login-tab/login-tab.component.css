@@ -5,11 +5,3 @@
 .ng-invalid:not(form)  {
     border-left: 5px solid #a94442; /* red */
 }
-
-.tab-content>.active {
-  display: block;
-  border: solid;
-  border-width: 1px;
-  border-color: #fff #dee2e6 #dee2e6;
-  padding: 15px;
-}

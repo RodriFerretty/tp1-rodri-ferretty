@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/AccountServices/auth.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-tab',
@@ -9,44 +10,45 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./login-tab.component.css']
 })
 export class LoginTabComponent implements OnInit {
-  model = new LoginModel()
+  contactForm: FormGroup;
 
-  constructor(
-    public authService: AuthService,
-    private spinner: NgxSpinnerService
-    ) { }
+  constructor(public authService: AuthService, private spinner: NgxSpinnerService) {
+    this.contactForm = this.createFormGroup();
+  }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
+    this.contactForm = this.createFormGroup();
+  }
+
+  get model() {
+    return this.contactForm.controls;
+  }
+  get email() {
+    return this.contactForm.get('email')
+  }
+
+  createFormGroup() {
+    return new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    });
+  }
+
+  onSubmit() {
+    this.onSignIn()
   }
 
   resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 
-  onSubmit() { 
-    // console.log(this.model)
-    this.onSignIn()
-  }
-
-  onSignIn(){
-    // console.log("Inicio onSignUp")
+  onSignIn() {
     this.spinner.show()
-    this.authService.SignIn(this.model.email, this.model.password).then((result) => {
-      // console.log("Then del onSignIn: ", result)
+    this.authService.SignIn(this.model.email.value, this.model.password.value).then((result) => {
       this.spinner.hide()
     }).catch((error) => {
-      // console.log("Catch del onSignIn: ", error)
       this.spinner.hide()
       window.alert(error.message)
     })
   }
-}
-
-export class LoginModel {
-  public email: string
-  public password: string
-  public captchaX: string
-  constructor(
-  ) {  }
 }

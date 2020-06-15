@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/AccountServices/auth.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up-tab',
@@ -9,42 +10,38 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./sign-up-tab.component.css']
 })
 export class SignUpTabComponent implements OnInit {
-  model = new SignUpModel()
+  signUpForm: FormGroup;
 
-  constructor(
-    public authService: AuthService,
-    private spinner: NgxSpinnerService
-  ) { }
-
-  ngOnInit(): void {
+  constructor(public authService: AuthService, private spinner: NgxSpinnerService) { 
+    this.signUpForm = this.createFormGroup();
   }
+
+  ngOnInit(): void { }
 
   onSubmit() {
     // console.log(this.model)
     this.onSignUp()
   }
 
-  // TODO: Remove this when we're done
-  // get diagnostic() { return JSON.stringify(this.model); }
+  get model() {
+    return this.signUpForm.controls;
+  }
 
+  createFormGroup() {
+    return new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    });
+  }
+  
   onSignUp() {
-    // console.log("Inicio onSignUp")
     this.spinner.show()
-    this.authService.SignUp(this.model.email, this.model.password, this.model.name).then((result) => {
+    this.authService.SignUp(this.model.email.value, this.model.password.value, this.model.username.value).then((result) => {
       this.spinner.hide()
-      // console.log("Then del onSignUp: ", result)
     }).catch((error) => {
       this.spinner.hide()
-      // console.log("Catch del onSignUp: ", error)
       window.alert(error.message)
     })
   }
-}
-
-export class SignUpModel {
-  public email: string
-  public name: string
-  public password: string
-  constructor(
-  ) { }
 }
